@@ -1,6 +1,6 @@
 .section-1-container {width: 100%; max-width: 800px; margin: 0 auto; padding: 0 1rem;}
 .section-1-container .content {width: 100%; padding: 1rem 0;}
-.section-1-container .back {text-align: end;}
+.section-1-container .back {text-align: end; padding-top: 2rem;}
 .section-1-container .content .writer-date {display: flex; gap: 0.5rem;}
 .section-1-container .content #title {font-size: 1.5rem;}
 .section-1-container .content #date {color: gray;}
