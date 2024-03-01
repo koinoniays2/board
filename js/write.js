@@ -5,7 +5,7 @@ const write = async (title, content) => {
             description: content,
             writer: '비회원'
         };
-        await fetch(' http://localhost:3000/board/write', {
+        await fetch('https://test-koinonia.koyeb.app/board/write', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

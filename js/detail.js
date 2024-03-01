@@ -8,7 +8,7 @@ const date = document.querySelector("#date");
 const content = document.querySelector("#content");
 const detail = async (clickedDataId) => {
     try {
-        const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
+        const response = await fetch(`https://test-koinonia.koyeb.app/board/${clickedDataId}`);
         const data = await response.json();
         console.log(data);
         title.textContent = data?.data?.title;
