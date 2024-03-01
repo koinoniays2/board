@@ -38,7 +38,7 @@ detail(clickedDataId).then(() => {
             const responseData = await response.json();
             console.log("Server response:", responseData);
             
-            window.location.href = `/detail.html?dataId=${clickedDataId}`;
+            window.location.href = `detail.html?dataId=${clickedDataId}`;
         } catch (error) {
             console.error('Error occurred:', error);
         }

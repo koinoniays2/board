@@ -31,7 +31,7 @@ update.addEventListener('click', async (e) => {
     try {
         const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
         const data = await response.json();
-        window.location.href = `/update.html?dataId=${clickedDataId}`;
+        window.location.href = `update.html?dataId=${clickedDataId}`;
     } catch (error) {
         console.error(error);
     }
