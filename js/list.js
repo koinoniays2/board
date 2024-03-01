@@ -1,6 +1,6 @@
 const list = async () => {
     try {
-        const response = await fetch('https://test-koinonia.koyeb.app/board');
+        const response = await fetch('http://localhost:3000/board');
         const data = await response.json();
         console.log(data);
         const listNumDiv = document.querySelector(".content-num");

@@ -6,9 +6,10 @@ const title = document.querySelector("#title");
 const writer = document.querySelector("#writer");
 const date = document.querySelector("#date");
 const content = document.querySelector("#content");
+const update = document.querySelector("#update");
 const detail = async (clickedDataId) => {
     try {
-        const response = await fetch(`https://test-koinonia.koyeb.app/board/${clickedDataId}`);
+        const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
         const data = await response.json();
         console.log(data);
         title.textContent = data?.data?.title;
@@ -23,3 +24,15 @@ const detail = async (clickedDataId) => {
     }
 }
 detail(clickedDataId);
+
+// 수정페이지 이동
+update.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+        const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
+        const data = await response.json();
+        window.location.href = `/update.html?dataId=${clickedDataId}`;
+    } catch (error) {
+        console.error(error);
+    }
+});

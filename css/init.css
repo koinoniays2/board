@@ -10,5 +10,7 @@ body {font-family: "NotoSansKR-Regular";}
     --height-transition: height 0.5s ease;
     --width-transition: width 0.5s ease;}
 
+button {background-color: transparent; border: none; color: inherit;
+    font: inherit; cursor: pointer; padding: 0;}
 .button { background-color: #353535; color: #F6F6F6;
     width: fit-content; padding: 0.5rem 1rem; border-radius: 10px;}
