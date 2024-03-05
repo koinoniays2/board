@@ -1,7 +1,7 @@
 import { timeFormat } from "../lib/timeFormat.js";
 
-// 페이지 버튼을 생성하는 함수
-const createPaginationButtons = (totalPages) => {
+// 페이지 버튼 생성
+const createPageBtn = (totalPages) => {
     const pageContainer = document.querySelector(".page-container");
     pageContainer.innerHTML = ""; // 이전에 생성된 버튼 제거
 
@@ -20,7 +20,7 @@ const requestPage = async (page) => {
     try {
         const response = await fetch(`http://localhost:3000/board?page=${page}`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         renderData(data);
         btnOn(page);
     } catch (error) {
@@ -75,12 +75,12 @@ const list = async () => {
     try {
         const response = await fetch('http://localhost:3000/board');
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         renderData(data);
 
         // 전체 데이터의 갯수를 이용하여 페이지 버튼 생성
         const totalPages = Math.ceil(data?.total / 10); // 10은 한 페이지에 보여줄 게시글의 수
-        createPaginationButtons(totalPages);
+        createPageBtn(totalPages);
     } catch (error) {
         console.error(error);
     }

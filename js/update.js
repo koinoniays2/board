@@ -1,6 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const clickedDataId = params.get("dataId");
-console.log(clickedDataId);
+// console.log(clickedDataId);
 
 const titleInput = document.querySelector("#title");
 const contentArea = document.querySelector("#content");
@@ -10,7 +10,7 @@ const detail = async (clickedDataId) => {
     try {
         const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         titleInput.value = data?.data?.title;
         contentArea.value = data?.data?.description;
     }catch(e) {
@@ -21,7 +21,7 @@ const detail = async (clickedDataId) => {
 let requestData;
 detail(clickedDataId).then(() => {
     requestData = {title:titleInput.value, description:contentArea.value};
-    console.log(requestData);
+    // console.log(requestData);
     update.addEventListener("click", async function(e) {
         e.preventDefault();
         try {

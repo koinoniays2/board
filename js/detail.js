@@ -2,7 +2,7 @@ import { timeFormat } from "../lib/timeFormat.js";
 
 const params = new URLSearchParams(window.location.search);
 const clickedDataId = params.get("dataId");
-console.log(clickedDataId);
+// console.log(clickedDataId);
 
 const title = document.querySelector("#title");
 const writer = document.querySelector("#writer");
@@ -13,7 +13,7 @@ const detail = async (clickedDataId) => {
     try {
         const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         title.textContent = data?.data?.title;
         writer.textContent = data?.data?.writer;
         if(data?.data?.updatedAt) {
