@@ -1,3 +1,5 @@
+import { timeFormat } from "../lib/timeFormat.js";
+
 const list = async () => {
     try {
         const response = await fetch('http://localhost:3000/board');
@@ -19,8 +21,8 @@ const list = async () => {
                 ${item.title}
             </a>`;
             listWriter.textContent = item.writer;
-            listDate.textContent = item.createdAt.substring(5, 10);
-
+            listDate.textContent = timeFormat(item.createdAt).substring(0, 10);
+            
             listNumDiv.appendChild(listNum);
             listTitleDiv.appendChild(listTitle);
             listWriterDiv.appendChild(listWriter);

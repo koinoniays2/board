@@ -1,3 +1,5 @@
+import { timeFormat } from "../lib/timeFormat.js";
+
 const params = new URLSearchParams(window.location.search);
 const clickedDataId = params.get("dataId");
 console.log(clickedDataId);
@@ -14,7 +16,11 @@ const detail = async (clickedDataId) => {
         console.log(data);
         title.textContent = data?.data?.title;
         writer.textContent = data?.data?.writer;
-        date.textContent = data?.data?.createdAt.substring(0, 10);
+        if(data?.data?.updatedAt) {
+            date.textContent = `수정일자 ${timeFormat(data?.data?.updatedAt)}`
+        } else {
+            date.textContent =`작성일자 ${timeFormat(data?.data?.createdAt)}`
+        }
         // 연속 공백, 줄바꿈 표시
         const description = data?.data?.description;
         const formattedDescription = description.replace(/\n/g, '<br>').replace(/\s/g, '&nbsp;');
@@ -26,13 +32,29 @@ const detail = async (clickedDataId) => {
 detail(clickedDataId);
 
 // 수정페이지 이동
-update.addEventListener('click', async (e) => {
+update.addEventListener('click', (e) => {
     e.preventDefault();
-    try {
-        const response = await fetch(`http://localhost:3000/board/${clickedDataId}`);
-        const data = await response.json();
         window.location.href = `update.html?dataId=${clickedDataId}`;
-    } catch (error) {
-        console.error(error);
-    }
 });
+
+// 삭제
+const deleteWrite = async (clickedDataId) => {
+    try{
+        return await fetch(`http://localhost:3000/board/${clickedDataId}/delete`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => res.json());
+    }catch(e){
+        console.log(e);
+    }
+}
+const deleteBtn = document.querySelector("#delete");
+deleteBtn.addEventListener("click", () => {
+    let deleteOk = confirm("삭제하시겠습니까?");
+    if(deleteOk) {
+        deleteWrite(clickedDataId);
+        window.location.href = 'index.html';
+    }
+})
